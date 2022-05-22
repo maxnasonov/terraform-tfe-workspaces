@@ -105,13 +105,13 @@ Apache 2 Licensed. See [LICENSE](LICENSE) for full details.
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.13.6, < 2.0 |
-| <a name="requirement_tfe"></a> [tfe](#requirement\_tfe) | ~> 0.30.0 |
+| <a name="requirement_tfe"></a> [tfe](#requirement\_tfe) | ~> 0.31 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_tfe"></a> [tfe](#provider\_tfe) | ~> 0.30.0 |
+| <a name="provider_tfe"></a> [tfe](#provider\_tfe) | ~> 0.31 |
 
 ## Resources
 
@@ -119,7 +119,6 @@ Apache 2 Licensed. See [LICENSE](LICENSE) for full details.
 |------|------|
 | [tfe_notification_configuration.slack](https://registry.terraform.io/providers/hashicorp/tfe/latest/docs/resources/notification_configuration) | resource |
 | [tfe_run_trigger.trigger](https://registry.terraform.io/providers/hashicorp/tfe/latest/docs/resources/run_trigger) | resource |
-| [tfe_variable.sec_vars](https://registry.terraform.io/providers/hashicorp/tfe/latest/docs/resources/variable) | resource |
 | [tfe_variable.vars](https://registry.terraform.io/providers/hashicorp/tfe/latest/docs/resources/variable) | resource |
 | [tfe_workspace.workspace](https://registry.terraform.io/providers/hashicorp/tfe/latest/docs/resources/workspace) | resource |
 | [tfe_workspace.current](https://registry.terraform.io/providers/hashicorp/tfe/latest/docs/data-sources/workspace) | data source |
@@ -128,23 +127,18 @@ Apache 2 Licensed. See [LICENSE](LICENSE) for full details.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_TFC_WORKSPACE_NAME"></a> [TFC\_WORKSPACE\_NAME](#input\_TFC\_WORKSPACE\_NAME) | TFC workspace name from the ENV | `string` | `null` | no |
+| <a name="input_default_vcs_identifier"></a> [default\_vcs\_identifier](#input\_default\_vcs\_identifier) | GitHub organization name and GitHub repository name separated by slash, e.g. `mygithuborg/tfp-super-thing` | `string` | n/a | yes |
 | <a name="input_execution_mode"></a> [execution\_mode](#input\_execution\_mode) | Terraform worskapce execution more: remote, local or agent | `string` | `"remote"` | no |
 | <a name="input_oauth_token_id"></a> [oauth\_token\_id](#input\_oauth\_token\_id) | ID of the oAuth token for the VCS connection | `string` | n/a | yes |
-| <a name="input_organization"></a> [organization](#input\_organization) | TF Organization to create workspaces under | `string` | n/a | yes |
-| <a name="input_sec_vars"></a> [sec\_vars](#input\_sec\_vars) | Map defining workspace sensitive variables | `map(any)` | `{}` | no |
+| <a name="input_secret_resolutions"></a> [secret\_resolutions](#input\_secret\_resolutions) | Map defining the actual values of the secrets | `map(any)` | `{}` | no |
 | <a name="input_slacks"></a> [slacks](#input\_slacks) | Map definning Slack notification options | `map(any)` | `{}` | no |
-| <a name="input_tag_names"></a> [tag\_names](#input\_tag\_names) | List of workspace tag names | `list(any)` | `[]` | no |
 | <a name="input_tf_version"></a> [tf\_version](#input\_tf\_version) | Version of Terraform to use in workspace | `string` | `null` | no |
+| <a name="input_tfc_workspace_slug"></a> [tfc\_workspace\_slug](#input\_tfc\_workspace\_slug) | TFC workspace slug | `string` | n/a | yes |
 | <a name="input_triggers"></a> [triggers](#input\_triggers) | Map for TFE trigger relations workspace->workspace2 | `map(any)` | `{}` | no |
-| <a name="input_vars"></a> [vars](#input\_vars) | Map defining workspace variables | `map(any)` | `{}` | no |
-| <a name="input_vcs_org"></a> [vcs\_org](#input\_vcs\_org) | The Github organization that repositories live under | `string` | n/a | yes |
-| <a name="input_vcs_repo"></a> [vcs\_repo](#input\_vcs\_repo) | The Github repository name that is backing this workspace | `string` | n/a | yes |
-| <a name="input_workspaces"></a> [workspaces](#input\_workspaces) | Workspaces map where we define workspace and its path | `map(any)` | `{}` | no |
+| <a name="input_vars"></a> [vars](#input\_vars) | Map defining default workspace variables | `map(any)` | `{}` | no |
+| <a name="input_workspaces"></a> [workspaces](#input\_workspaces) | Workspaces map where we define workspace and its path | `map` | `{}` | no |
 
 ## Outputs
 
-| Name | Description |
-|------|-------------|
-| <a name="output_work_vars"></a> [work\_vars](#output\_work\_vars) | n/a |
+No outputs.
 <!-- END_TF_DOCS -->
