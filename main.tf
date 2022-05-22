@@ -1,22 +1,22 @@
 # Individual workspace
 resource "tfe_workspace" "workspace" {
-  for_each = var.workspaces
+  for_each = local.workspaces
 
   name                          = each.key
-  description                   = "Workspace: ${each.key} | Triggered from path: ${each.value}"
+  description                   = "Workspace: ${each.key} | Triggered from path: ${each.value.vcs_identifier}${each.value.vcs_branch != null ? "@${each.value.vcs_branch}" : ""}:${each.value.working_directory != null ? each.value.working_directory : "/"}"
   allow_destroy_plan            = true
   organization                  = var.organization
-  terraform_version             = local.tf_version
-  working_directory             = each.value
+  terraform_version             = each.value.terraform_version
+  working_directory             = each.value.working_directory
   file_triggers_enabled         = true
-  auto_apply                    = false
+  auto_apply                    = each.value.auto_apply
   execution_mode                = var.execution_mode
   structured_run_output_enabled = false
-  tag_names                     = var.tag_names
+  tag_names                     = each.value.tag_names != null ? each.value.tag_names : [each.value.template_name]
 
   vcs_repo {
-    # branch         = "main"
-    identifier     = local.vcs_identifier
+    branch         = each.value.vcs_branch
+    identifier     = each.value.vcs_identifier
     oauth_token_id = var.oauth_token_id
   }
 }

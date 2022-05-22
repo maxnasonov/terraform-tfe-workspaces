@@ -1,4 +1,5 @@
 data "tfe_workspace" "current" {
-  name         = var.TFC_WORKSPACE_NAME
-  organization = var.organization
+  organization = local.tfc_organization_name
+  name         = local.tfc_workspace_name
 }
+

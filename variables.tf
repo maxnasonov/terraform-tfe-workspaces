@@ -15,31 +15,16 @@ variable "oauth_token_id" {
   type        = string
 }
 
-variable "organization" {
-  description = "TF Organization to create workspaces under"
-  type        = string
-}
-
 variable "tf_version" {
   description = "Version of Terraform to use in workspace"
   type        = string
   default     = null
 }
 
-variable "vcs_org" {
-  description = "The Github organization that repositories live under"
-  type        = string
-}
-
-variable "vcs_repo" {
-  description = "The Github repository name that is backing this workspace"
-  type        = string
-}
-
 variable "workspaces" {
   description = "Workspaces map where we define workspace and its path"
-  type        = map(any)
-  default     = {}
+  #type        = map(any)
+  default = {}
 }
 
 variable "slacks" {
@@ -60,26 +45,24 @@ variable "execution_mode" {
   default     = "remote"
 }
 
-variable "tag_names" {
-  description = "List of workspace tag names"
-  type        = list(any)
-  default     = []
+variable "default_vcs_identifier" {
+  type        = string
+  description = "GitHub organization name and GitHub repository name separated by slash, e.g. `mygithuborg/tfp-super-thing`"
 }
 
 variable "vars" {
-  description = "Map defining workspace variables"
+  description = "Map defining default workspace variables"
   type        = map(any)
   default     = {}
 }
 
-variable "sec_vars" {
-  description = "Map defining workspace sensitive variables"
+variable "secret_resolutions" {
+  description = "Map defining the actual values of the secrets"
   type        = map(any)
   default     = {}
 }
 
-variable "TFC_WORKSPACE_NAME" {
-  description = "TFC workspace name from the ENV"
+variable "tfc_workspace_slug" {
+  description = "TFC workspace slug"
   type        = string
-  default     = null
 }
