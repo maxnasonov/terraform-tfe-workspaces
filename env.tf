@@ -55,7 +55,7 @@ resource "tfe_variable" "vars" {
 
   category     = lookup(each.value, "category", "terraform")
   key          = each.value.name
-  value        = lookup(var.secret_resolutions, each.value.value, each.value.value)
+  value        = each.value.value
   workspace_id = tfe_workspace.workspace[each.value.workspace_name].id
   description  = "${each.value.name} for TerraformCloud"
   sensitive    = each.value.sensitive

@@ -44,12 +44,6 @@ variable "vars" {
   default     = {}
 }
 
-variable "secret_resolutions" {
-  description = "Map defining the actual values of the secrets"
-  type        = map(any)
-  default     = {}
-}
-
 variable "tfc_workspace_slug" {
   description = "TFC workspace slug"
   type        = string
