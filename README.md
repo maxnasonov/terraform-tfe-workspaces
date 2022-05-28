@@ -131,7 +131,6 @@ Apache 2 Licensed. See [LICENSE](LICENSE) for full details.
 | <a name="input_default_vcs_identifier"></a> [default\_vcs\_identifier](#input\_default\_vcs\_identifier) | GitHub organization name and GitHub repository name separated by slash, e.g. `mygithuborg/tfp-super-thing` | `string` | n/a | yes |
 | <a name="input_execution_mode"></a> [execution\_mode](#input\_execution\_mode) | Terraform worskapce execution more: remote, local or agent | `string` | `"remote"` | no |
 | <a name="input_oauth_token_id"></a> [oauth\_token\_id](#input\_oauth\_token\_id) | ID of the oAuth token for the VCS connection | `string` | n/a | yes |
-| <a name="input_secret_resolutions"></a> [secret\_resolutions](#input\_secret\_resolutions) | Map defining the actual values of the secrets | `map(any)` | `{}` | no |
 | <a name="input_slacks"></a> [slacks](#input\_slacks) | Map definning Slack notification options | `map(any)` | `{}` | no |
 | <a name="input_tf_version"></a> [tf\_version](#input\_tf\_version) | Version of Terraform to use in workspace | `string` | `null` | no |
 | <a name="input_tfc_workspace_slug"></a> [tfc\_workspace\_slug](#input\_tfc\_workspace\_slug) | TFC workspace slug | `string` | n/a | yes |
