@@ -1,6 +1,7 @@
 variable "oauth_token_id" {
   description = "ID of the oAuth token for the VCS connection"
   type        = string
+  sensitive   = true
 }
 
 variable "tf_version" {
