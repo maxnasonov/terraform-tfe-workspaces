@@ -24,17 +24,17 @@ set_version.%:
 
 # Direct assignment $(eval TAG=$$(git tag | sort -V | tail -n 1 | awk -F. -v OFS=. '{$$1=$$1+1; print}') would work but requires make version 4+
 bump_version_major:
-	$(eval TAG := $(shell git tag | sort -V | tail -n 1 | awk -F. -v OFS=. '{$$1=$$1+1; print}'))
+	$(eval TAG := $(shell git tag | grep -v '^v' | sort -V | tail -n 1 | awk -F. -v OFS=. '{$$1=$$1+1; print}'))
 	git tag $(TAG)
 	git push origin $(TAG)
 
 bump_version_minor:
-	$(eval TAG := $(shell git tag | sort -V | tail -n 1 | awk -F. -v OFS=. '{$$2=$$2+1; print}'))
+	$(eval TAG := $(shell git tag | grep -v '^v' | sort -V | tail -n 1 | awk -F. -v OFS=. '{$$2=$$2+1; print}'))
 	git tag $(TAG)
 	git push origin $(TAG)
 
 bump_version_patch:
-	$(eval TAG := $(shell git tag | sort -V | tail -n 1 | awk -F. -v OFS=. '{$$3=$$3+1; print}'))
+	$(eval TAG := $(shell git tag | grep -v '^v' | sort -V | tail -n 1 | awk -F. -v OFS=. '{$$3=$$3+1; print}'))
 	git tag $(TAG)
 	git push origin $(TAG)
 
