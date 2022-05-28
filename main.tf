@@ -12,7 +12,7 @@ resource "tfe_workspace" "workspace" {
   auto_apply                    = each.value.auto_apply
   execution_mode                = var.execution_mode
   structured_run_output_enabled = false
-  tag_names                     = each.value.tag_names != null ? each.value.tag_names : [each.value.template_name]
+  tag_names                     = each.value.tag_names != null ? each.value.tag_names : [each.value.configuration_name]
 
   vcs_repo {
     branch         = each.value.vcs_branch

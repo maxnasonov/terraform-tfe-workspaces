@@ -1,15 +1,3 @@
-#// Should be provided from the Terraform Cloud environment
-#variable aws_access_key_id {
-#  description = "The AWS_ACCESS_KEY_ID for TerraformCloud runs"
-#  type        = string
-#}
-#
-#// Should be provided from the Terraform Cloud environment
-#variable aws_secret_access_key {
-#  description = "The AWS_SECRET_ACCESS_KEY for TerraformCloud runs"
-#  type        = string
-#}
-
 variable "oauth_token_id" {
   description = "ID of the oAuth token for the VCS connection"
   type        = string
@@ -65,4 +53,14 @@ variable "secret_resolutions" {
 variable "tfc_workspace_slug" {
   description = "TFC workspace slug"
   type        = string
+}
+
+variable "configuration_vcs_repository_prefix" {
+  type = "string"
+  default = "tfconf-"
+  description = <<-EOT
+  Prefix for Terraform configuraiton repositories. It is used for default workspace tags.
+  For example, for prefix "tfconf-" and "tfconf-great-code" the Terraform configuration name would be "great-code" and
+  will be used to tag corresponding workspaces with "great-code" tag.
+  EOT
 }

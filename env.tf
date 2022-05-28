@@ -43,7 +43,7 @@ locals {
     tag_names         = lookup(workspace_params, "tag_names", null)
     vcs_branch        = lookup(workspace_params, "branch", null)
     vcs_identifier    = lookup(workspace_params, "vcs_identifier", var.default_vcs_identifier)
-    template_name     = lookup(workspace_params, "vcs_identifier", null) == null ? strrev(split("/", strrev(workspace_params.path))[0]) : replace(strrev(split("/", strrev(workspace_params.vcs_identifier))[0]), "tfp-", "")
+    configuration_name     = lookup(workspace_params, "vcs_identifier", null) == null ? strrev(split("/", strrev(workspace_params.path))[0]) : replace(strrev(split("/", strrev(workspace_params.vcs_identifier))[0]), var.configuration_vcs_repository_prefix, "")
   } }
 }
 
