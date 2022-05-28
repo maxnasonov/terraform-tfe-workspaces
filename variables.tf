@@ -56,7 +56,7 @@ variable "tfc_workspace_slug" {
 }
 
 variable "configuration_vcs_repository_prefix" {
-  type = "string"
+  type = string
   default = "tfconf-"
   description = <<-EOT
   Prefix for Terraform configuraiton repositories. It is used for default workspace tags.
