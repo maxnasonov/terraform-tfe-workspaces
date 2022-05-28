@@ -111,7 +111,7 @@ Apache 2 Licensed. See [LICENSE](LICENSE) for full details.
 
 | Name | Version |
 |------|---------|
-| <a name="provider_tfe"></a> [tfe](#provider\_tfe) | ~> 0.31 |
+| <a name="provider_tfe"></a> [tfe](#provider\_tfe) | 0.31.0 |
 
 ## Resources
 
@@ -127,6 +127,7 @@ Apache 2 Licensed. See [LICENSE](LICENSE) for full details.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| <a name="input_configuration_vcs_repository_prefix"></a> [configuration\_vcs\_repository\_prefix](#input\_configuration\_vcs\_repository\_prefix) | Prefix for Terraform configuraiton repositories. It is used for default workspace tags.<br>For example, for prefix "tfconf-" and "tfconf-great-code" the Terraform configuration name would be "great-code" and<br>will be used to tag corresponding workspaces with "great-code" tag. | `string` | `"tfconf-"` | no |
 | <a name="input_default_vcs_identifier"></a> [default\_vcs\_identifier](#input\_default\_vcs\_identifier) | GitHub organization name and GitHub repository name separated by slash, e.g. `mygithuborg/tfp-super-thing` | `string` | n/a | yes |
 | <a name="input_execution_mode"></a> [execution\_mode](#input\_execution\_mode) | Terraform worskapce execution more: remote, local or agent | `string` | `"remote"` | no |
 | <a name="input_oauth_token_id"></a> [oauth\_token\_id](#input\_oauth\_token\_id) | ID of the oAuth token for the VCS connection | `string` | n/a | yes |
