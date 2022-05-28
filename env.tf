@@ -36,14 +36,14 @@ locals {
   ])
 
   workspaces = { for workspace_name, workspace_params in var.workspaces : workspace_name => {
-    name              = workspace_name
-    terraform_version = lookup(workspace_params, "terraform_version", local.tf_version)
-    working_directory = lookup(workspace_params, "path", null)
-    auto_apply        = lookup(workspace_params, "auto_apply", false)
-    tag_names         = lookup(workspace_params, "tag_names", null)
-    vcs_branch        = lookup(workspace_params, "branch", null)
-    vcs_identifier    = lookup(workspace_params, "vcs_identifier", var.default_vcs_identifier)
-    configuration_name     = lookup(workspace_params, "vcs_identifier", null) == null ? strrev(split("/", strrev(workspace_params.path))[0]) : replace(strrev(split("/", strrev(workspace_params.vcs_identifier))[0]), var.configuration_vcs_repository_prefix, "")
+    name               = workspace_name
+    terraform_version  = lookup(workspace_params, "terraform_version", local.tf_version)
+    working_directory  = lookup(workspace_params, "path", null)
+    auto_apply         = lookup(workspace_params, "auto_apply", false)
+    tag_names          = lookup(workspace_params, "tag_names", null)
+    vcs_branch         = lookup(workspace_params, "branch", null)
+    vcs_identifier     = lookup(workspace_params, "vcs_identifier", var.default_vcs_identifier)
+    configuration_name = lookup(workspace_params, "vcs_identifier", null) == null ? strrev(split("/", strrev(workspace_params.path))[0]) : replace(strrev(split("/", strrev(workspace_params.vcs_identifier))[0]), var.configuration_vcs_repository_prefix, "")
   } }
 }
 
