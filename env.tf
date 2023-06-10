@@ -30,6 +30,7 @@ locals {
         name           = var_key
         value          = var_params.value
         category       = lookup(var_params, "category", "terraform")
+        hcl            = lookup(var_params, "hcl", false)
         sensitive      = lookup(var_params, "sensitive", false)
       }
     ]
@@ -56,6 +57,7 @@ resource "tfe_variable" "vars" {
   category     = lookup(each.value, "category", "terraform")
   key          = each.value.name
   value        = each.value.value
+  hcl          = lookup(each.value, "hcl", false)
   workspace_id = tfe_workspace.workspace[each.value.workspace_name].id
   description  = "${each.value.name} for TerraformCloud"
   sensitive    = each.value.sensitive
